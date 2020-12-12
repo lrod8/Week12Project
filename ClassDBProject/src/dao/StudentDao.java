@@ -2,7 +2,12 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import entity.Student;
 
 public class StudentDao {
 	
@@ -10,6 +15,7 @@ private Connection connection;
 	
 	//Insert The MYSQL private Final Strings in here
 private final String CREATE_NEW_STUDENT_QUERY = "INSERT INTO student(studentName, grade, classId) VALUES (?,?,?)";
+private final String GET_STUDENT_BY_CLASS_ID_QUERY = "SELECT * FROM student WHERE class_id = ?";	
 
 	
 	public StudentDao() {
@@ -22,6 +28,18 @@ private final String CREATE_NEW_STUDENT_QUERY = "INSERT INTO student(studentName
 		ps.setInt(2, grade);
 		ps.setInt(3, classId);
 		ps.executeUpdate();
+	}
+	
+	public List<Student> getStudentByClassId(int classId) throws SQLException {	
+		PreparedStatement ps = connection.prepareStatement(GET_STUDENT_BY_CLASS_ID_QUERY); 
+		ps.setInt(1, classId);
+		ResultSet rs = ps.executeQuery();
+		List<Student> students = new ArrayList<Student>();
+		
+		while (rs.next()) {	
+			students.add(new Student(rs.getInt(3), rs.getString(1));
+		}
+		return students;
 	}
 
 	//finish coding and setting the prepared statements
