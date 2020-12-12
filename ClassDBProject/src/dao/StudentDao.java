@@ -16,7 +16,7 @@ private Connection connection;
 	//Insert The MYSQL private Final Strings in here
 private final String CREATE_NEW_STUDENT_QUERY = "INSERT INTO student(studentName, grade, classId) VALUES (?,?,?)";
 private final String GET_STUDENT_BY_CLASS_ID_QUERY = "SELECT * FROM student WHERE class_id = ?";	
-
+private final String UPDATE_STUDENT_BY_ID = "UPDATE student SET  classId = ?, grade = ?, studentName = ? WHERE id = ?";
 	
 	public StudentDao() {
 		connection = DBConnection.getConnection();
@@ -42,6 +42,16 @@ private final String GET_STUDENT_BY_CLASS_ID_QUERY = "SELECT * FROM student WHER
 //		return students;
 //	}
 
+	public void updateStudentById (int classId, int grade, String studentName, int id) throws SQLException {
+		PreparedStatement ps = connection.prepareStatement(UPDATE_STUDENT_BY_ID);
+		ps.setInt(1, classId);
+		ps.setInt(2, grade);
+		ps.setString(3, studentName);
+		ps.setInt(4, id);
+		ps.executeUpdate();
+	}	
+	
+	
 	//finish coding and setting the prepared statements
 
 }
