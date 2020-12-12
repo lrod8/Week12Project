@@ -4,10 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
-import entity.Teacher;
 
 public class TeacherDao {
 	
@@ -15,7 +12,8 @@ public class TeacherDao {
 	
 	//Insert The MYSQL private Final Strings in here
 	private final String CREATE_NEW_TEACHER_QUERY = "INSERT INTO teacher(teacherName, hireDate, email, classId) VALUES (?,?,?,?)";
-	private final String GET_TEACHER_BY_CLASS_ID_QUERY = "SELECT * FROM teacher WHERE class_id = ?";
+	private final String SHOW_TEACHER_BY_ID_QUERY = "SELECT * FROM teacher WHERE id = ?";
+	private final String SHOW_ALL_TEACHERS_QUERY = "SELECT * FROM teacher";	
 
 	
 	public TeacherDao() {
@@ -33,17 +31,23 @@ public class TeacherDao {
 		ps.executeUpdate();
 	}
 
-//	public List<Teacher> getTeacherByClassId(int classId) throws SQLException {
-//		PreparedStatement ps = connection.prepareStatement(GET_TEACHER_BY_CLASS_ID_QUERY); 
-//		ps.setInt(1, classId);
-//		ResultSet rs = ps.executeQuery();
-//		List<Teacher> teachers = new ArrayList<Teacher>();
-//		
-//		while (rs.next()) {	
-//			teachers.add(new Teacher(rs.getInt(4), rs.getString(1));
-//		}
-//		return teachers;
-//	}
+	public void showAllTeachers() throws SQLException {	
+		PreparedStatement ps = connection.prepareStatement(SHOW_ALL_TEACHERS_QUERY);
+		ResultSet rs = ps.executeQuery();
+		while (rs.next()) {
+			System.out.println("Id: " + rs.getInt(1) + "\tTeacher Name: " + rs.getString(2));
+		}
+
+	}
+	public void showTeacherById(int teacherId) throws SQLException { 	
+		PreparedStatement ps = connection.prepareStatement(SHOW_TEACHER_BY_ID_QUERY);
+		ps.setInt(1, teacherId);
+		ResultSet rs = ps.executeQuery();
+		while(rs.next()) {	
+		System.out.println("Id: " + rs.getInt(1) + "\tTeacher Name: " + rs.getString(2));	
+		}
+	}
+
 
 }
 
