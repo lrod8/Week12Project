@@ -98,7 +98,9 @@ public class Menu {
 	}
 
 	private void createClass() throws SQLException {
-		
+		System.out.print("Enter the name of the new class:");
+		String className = scanner.nextLine();
+		classDao.createNewClass(className);
 	}
 	private void showClass() throws SQLException {
 		
