@@ -16,7 +16,7 @@ public class TeacherDao {
 	//Insert The MYSQL private Final Strings in here
 	private final String CREATE_NEW_TEACHER_QUERY = "INSERT INTO teacher(teacherName, hireDate, email, classId) VALUES (?,?,?,?)";
 	private final String GET_TEACHER_BY_CLASS_ID_QUERY = "SELECT * FROM teacher WHERE class_id = ?";
-
+	private final String UPDATE_TEACHER_BY_ID = "UPDATE teacher SET  classId = ?, hireDate = ?, teacherName = ?, email = ? WHERE id = ?";
 	
 	public TeacherDao() {
 		connection = DBConnection.getConnection();
@@ -45,5 +45,16 @@ public class TeacherDao {
 //		return teachers;
 //	}
 
+	public void updateTeacherById (int classId, String hireDate, String teacherName, String email, int id) throws SQLException {
+		PreparedStatement ps = connection.prepareStatement(UPDATE_TEACHER_BY_ID);
+		ps.setInt(1, classId);
+		ps.setString(2, hireDate);
+		ps.setString(3, teacherName);
+		ps.setString(4, email);
+		ps.setInt(5, id);
+		ps.executeUpdate();
+	}	
+	
+	
 }
 

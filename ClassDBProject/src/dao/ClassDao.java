@@ -15,7 +15,7 @@ public class ClassDao {
 	private final String CREATE_NEW_CLASS_QUERY = "INSERT INTO class(className) VALUES (?)";
 	private final String GET_CLASS_QUERY = "SELECT * FROM class";
 	private final String GET_CLASS_BY_ID_QUERY = "SELECT * FROM classes WHERE id = ?";	
-	
+	private final String UPDATE_CLASS_BY_ID = "UPDATE class SET  className = ? WHERE id = ?";
 	public ClassDao() {
 		connection = DBConnection.getConnection();
 	}
@@ -46,6 +46,14 @@ public class ClassDao {
 //		rs.next();	
 //		return populateClass(rs.getInt(1), rs.getString(2));	
 //	}
+	
+	public void updateClassById (int id, String className) throws SQLException {
+		PreparedStatement ps = connection.prepareStatement(UPDATE_CLASS_BY_ID);
+		ps.setString(1, className);
+		ps.setInt(2, id);
+		ps.executeUpdate();
+	}	
+	
 
 //	private Class populateClass(int id, String name) throws SQLException {	
 //		return new Class(id, name, studentDao.getstudentByClassId(id) + teacherDao.getteacherByClassId(id));
