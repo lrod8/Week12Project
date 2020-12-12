@@ -33,17 +33,17 @@ public class TeacherDao {
 		ps.executeUpdate();
 	}
 
-	public List<Teacher> getTeacherByClassId(int classId) throws SQLException {
-		PreparedStatement ps = connection.prepareStatement(GET_TEACHER_BY_CLASS_ID_QUERY); 
-		ps.setInt(1, classId);
-		ResultSet rs = ps.executeQuery();
-		List<Teacher> teachers = new ArrayList<Teacher>();
-		
-		while (rs.next()) {	
-			teachers.add(new Teacher(rs.getInt(4), rs.getString(1));
-		}
-		return teachers;
-	}
+//	public List<Teacher> getTeacherByClassId(int classId) throws SQLException {
+//		PreparedStatement ps = connection.prepareStatement(GET_TEACHER_BY_CLASS_ID_QUERY); 
+//		ps.setInt(1, classId);
+//		ResultSet rs = ps.executeQuery();
+//		List<Teacher> teachers = new ArrayList<Teacher>();
+//		
+//		while (rs.next()) {	
+//			teachers.add(new Teacher(rs.getInt(4), rs.getString(1));
+//		}
+//		return teachers;
+//	}
 
 }
 
