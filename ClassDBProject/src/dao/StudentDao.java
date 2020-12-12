@@ -32,7 +32,7 @@ private final String SHOW_ALL_STUDENTS_QUERY = "SELECT * FROM student";
 		PreparedStatement ps = connection.prepareStatement(SHOW_ALL_STUDENTS_QUERY);
 		ResultSet rs = ps.executeQuery();
 		while (rs.next()) {
-			System.out.println("Id: " + rs.getInt(1) + "\tStudent Name: " + rs.getString(2));
+			System.out.println("Id: " + rs.getInt(1) + "\tStudent Name: " + rs.getString(4) + "\tGrade: " + rs.getString(3) + "\tClass Id: " + rs.getString(2));
 		}
 
 	}
