@@ -44,7 +44,7 @@ public class TeacherDao {
 		ps.setInt(1, teacherId);
 		ResultSet rs = ps.executeQuery();
 		while(rs.next()) {	
-			System.out.println("Id: " + rs.getInt(1) + "\tTeacher Name: " + rs.getString(2) + "\tHire Date: " + rs.getDate(3) + "\tEmail: " + rs.getString(4) + "\tClass Id: " + rs.getInt(5));		
+			System.out.println("Id: " + rs.getInt(1) + "\tTeacher Name: " + rs.getString(4) + "\tHire Date: " + rs.getDate(3) + "\tEmail: " + rs.getString(5) + "\tClass Id: " + rs.getInt(2));		
 		}
 	}
 
