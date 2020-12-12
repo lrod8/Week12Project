@@ -7,6 +7,7 @@ public class Class {
 	private int classId;
 	private String className;
 	private List<Student> students;
+	private List<Class> classes;
 	private Teacher teachers;
 	
 	public Class(int classId, String className, List<Student> students, Teacher teachers) {
@@ -36,6 +37,14 @@ public class Class {
 
 	public void setStudents(List<Student> students) {
 		this.students = students;
+	}
+	
+	public List<Class> getclasses() {
+		return classes;
+	}
+	
+	public void setClasses(List<Class> classes) {
+		this.classes = classes;
 	}
 
 	public Teacher getTeachers() {
