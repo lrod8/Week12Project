@@ -42,6 +42,7 @@ public class Menu {
 													"Show Students",
 													"Update Student",
 													"Delete Student");
+	
 	public void start() {
 		String selection ="";
 		
@@ -127,7 +128,13 @@ public class Menu {
 		
 	}
 	private void createStudent() throws SQLException {
-		
+		System.out.print("Enter the name of the new student:");
+		String studentName = scanner.nextLine();
+		System.out.print("Enter the numeric grade of the new student:");
+		int grade = Integer.parseInt(scanner.nextLine());
+		System.out.print("Enter the class id of the new student:");
+		int classId = Integer.parseInt(scanner.nextLine());
+		studentDao.createNewStudent(studentName, grade, classId);
 	}
 	private void showStudent() throws SQLException {
 		
