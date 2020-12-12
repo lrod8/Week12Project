@@ -113,7 +113,15 @@ public class Menu {
 		
 	}
 	private void createTeacher() throws SQLException {
-		
+		System.out.print("Enter the name of the new teacher:");
+		String teacherName = scanner.nextLine();
+		System.out.print("Enter the hire date YYYY-MM-DD of the new teacher:");
+		String hireDate = scanner.nextLine();
+		System.out.println("Enter the email of the new teacher:");
+		String email = scanner.nextLine();
+		System.out.print("Enter the class id of the new teacher:");
+		int classId = Integer.parseInt(scanner.nextLine());
+		teacherDao.createNewTeacher(teacherName, hireDate, email, classId);
 	}
 	private void showTeacher() throws SQLException {
 		
