@@ -10,6 +10,8 @@ import dao.ClassDao;
 import dao.DBConnection;
 import dao.StudentDao;
 import dao.TeacherDao;
+import entity.Student;
+import entity.Teacher;
 
 public class Menu {
 	
@@ -103,10 +105,21 @@ public class Menu {
 		classDao.createNewClass(className);
 	}
 	private void showClass() throws SQLException {
+		System.out.print("Enter class id: ");
+		int id = Integer.parseInt(scanner.nextLine());
+		Class class = classDao.getClassById(id);
+		System.out.println(class.getClassId() + ": " + class.getClassName());
+		for (Student student : class.getStudents()) {
+			System.out.println("\tStudentId: " + student.getStudentId() + " - Name: " + student.getName());
+			
+		}
 		
 	}
 	private void showClasses() throws SQLException {
-		
+		List<Class> classes = classDao.getClasses();
+			for (Class class : classes) {
+				System.out.println(class.getClassId() + ": " + class.getClassName());
+		}
 	}
 	private void updateClass() throws SQLException {
 		
@@ -125,12 +138,24 @@ public class Menu {
 		int classId = Integer.parseInt(scanner.nextLine());
 		teacherDao.createNewTeacher(teacherName, hireDate, email, classId);
 	}
-	private void showTeacher() throws SQLException {
-		
-	}
+	
 	private void showTeachers() throws SQLException {
-		
+		List<Teacher> teachers = teacherDao.getClass();
+		for (Teacher teacher : teachers) {
+			System.out.println(teacher.getTeacherId() + ": " + teacher.getTeacherName());
+		}
 	}
+	
+	private void showTeacher() throws SQLException {
+		System.out.print("Enter teacher id: ");
+		int id = Integer.parseInt(scanner.nextLine());
+		Teacher teacher = teacherDao.getTeacherById(id);
+		System.out.println(teacher.getTeacherId() + ": " + teacher.getTeacherName());
+		for (Teacher teacher : teacher.getTeacher()) {
+			System.out.println("\tTeacherId: " + teacher.getTeacherId() + " - Name: " + teacher.getTeacherName());
+		}
+	}
+	
 	private void updateTeacher() throws SQLException {
 		
 	}
@@ -147,11 +172,20 @@ public class Menu {
 		studentDao.createNewStudent(studentName, grade, classId);
 	}
 	private void showStudent() throws SQLException {
-		
+		System.out.print("Enter student id: ");
+		int id = Integer.parseInt(scanner.nextLine());
+		Student student = studentDao.getStudentById(id);
+		System.out.println(student.getStudentId() + ": " + student.getStudentName());
+		for (Student student : student.getStudents()) {
+			System.out.println("\tStudentId: " + student.getStudentId() + " - Name: " + student.getStudentName());
 	}
-	private void showStudents() throws SQLException {
-		
+
+	private void showStudents() throws SQLException { 
+		List<Student> students = studentDao.getStudent();
+		for (Student student : students) {
+			System.out.println(student.getStudentId() + ": " + student.getStudentName());
 	}
+
 	private void updateStudent() throws SQLException {
 		
 	}
