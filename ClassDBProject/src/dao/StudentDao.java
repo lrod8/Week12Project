@@ -30,17 +30,17 @@ private final String GET_STUDENT_BY_CLASS_ID_QUERY = "SELECT * FROM student WHER
 		ps.executeUpdate();
 	}
 	
-	public List<Student> getStudentByClassId(int classId) throws SQLException {	
-		PreparedStatement ps = connection.prepareStatement(GET_STUDENT_BY_CLASS_ID_QUERY); 
-		ps.setInt(1, classId);
-		ResultSet rs = ps.executeQuery();
-		List<Student> students = new ArrayList<Student>();
-		
-		while (rs.next()) {	
-			students.add(new Student(rs.getInt(3), rs.getString(1));
-		}
-		return students;
-	}
+//	public List<Student> getStudentByClassId(int classId) throws SQLException {	
+//		PreparedStatement ps = connection.prepareStatement(GET_STUDENT_BY_CLASS_ID_QUERY); 
+//		ps.setInt(1, classId);
+//		ResultSet rs = ps.executeQuery();
+//		List<Student> students = new ArrayList<Student>();
+//		
+//		while (rs.next()) {	
+//			students.add(new Student(rs.getInt(3), rs.getString(1));
+//		}
+//		return students;
+//	}
 
 	//finish coding and setting the prepared statements
 
