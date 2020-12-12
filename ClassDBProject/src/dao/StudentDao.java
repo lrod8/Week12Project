@@ -41,7 +41,7 @@ private final String SHOW_ALL_STUDENTS_QUERY = "SELECT * FROM student";
 		ps.setInt(1, studentId);
 		ResultSet rs = ps.executeQuery();
 		while(rs.next()) {	
-		System.out.println("Id: " + rs.getInt(1) + "\tStudent Name: " + rs.getString(2));	
+			System.out.println("Id: " + rs.getInt(1) + "\tStudent Name: " + rs.getString(4) + "\tGrade: " + rs.getString(3) + "\tClass Id: " + rs.getString(2));		
 
 	//finish coding and setting the prepared statements
 		}
