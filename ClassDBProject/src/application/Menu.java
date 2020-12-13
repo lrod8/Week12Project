@@ -118,7 +118,10 @@ public class Menu {
 		
 	}
 	private void deleteClass() throws SQLException {
-		
+		System.out.print("Enter a class ID to delete:");
+		int id = Integer.parseInt(scanner.nextLine());
+		classDao.deleteClassById(id);
+		System.out.println("Class ID:" + id + " has been deleted!");
 	}
 	private void createTeacher() throws SQLException {
 		System.out.print("Enter the name of the new teacher:");
@@ -146,7 +149,10 @@ public class Menu {
 		
 	}
 	private void deleteTeacher() throws SQLException {
-		
+		System.out.print("Enter a teacher ID to delete:");
+		int id = Integer.parseInt(scanner.nextLine());
+		teacherDao.deleteTeacherById(id);
+		System.out.println("Teacher ID:" + id + " has been deleted!");
 	}
 	private void createStudent() throws SQLException {
 		System.out.print("Enter the name of the new student:");
@@ -171,7 +177,10 @@ public class Menu {
 		
 	}
 	private void deleteStudent() throws SQLException {
-		
+		System.out.print("Enter a student ID to delete:");
+		int id = Integer.parseInt(scanner.nextLine());
+		studentDao.deleteStudentById(id);
+		System.out.println("Student ID:" + id + " has been deleted!");
 	}
 
 }

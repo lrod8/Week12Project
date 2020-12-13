@@ -14,6 +14,9 @@ public class TeacherDao {
 	private final String CREATE_NEW_TEACHER_QUERY = "INSERT INTO teacher(teacherName, hireDate, email, classId) VALUES (?,?,?,?)";
 	private final String SHOW_TEACHER_BY_ID_QUERY = "SELECT * FROM teacher WHERE id = ?";
 	private final String SHOW_ALL_TEACHERS_QUERY = "SELECT * FROM teacher";	
+	private final String DELETE_TEACHER_BY_ID_QUERY = "DELETE FROM teacher WHERE id = ?";
+	private final String DELETE_TEACHER_BY_CLASS_ID_QUERY = "DELETE FROM teacher WHERE classid = ?";
+
 
 	
 	public TeacherDao() {
@@ -46,6 +49,18 @@ public class TeacherDao {
 		while(rs.next()) {	
 			System.out.println("Id: " + rs.getInt(1) + "\tTeacher Name: " + rs.getString(4) + "\tHire Date: " + rs.getDate(3) + "\tEmail: " + rs.getString(5) + "\tClass Id: " + rs.getInt(2));		
 		}
+	}
+	
+	public void deleteTeacherById (int id) throws SQLException {
+		PreparedStatement ps = connection.prepareStatement(DELETE_TEACHER_BY_ID_QUERY);
+		ps.setInt(1, id);
+		ps.executeUpdate();
+	}
+	
+	public void deleteTeacherByClassId (int classId) throws SQLException {
+		PreparedStatement ps = connection.prepareStatement(DELETE_TEACHER_BY_CLASS_ID_QUERY);
+		ps.setInt(1, classId);
+		ps.executeUpdate();
 	}
 
 

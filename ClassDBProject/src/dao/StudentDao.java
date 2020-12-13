@@ -12,7 +12,9 @@ private Connection connection;
 	//Insert The MYSQL private Final Strings in here
 private final String CREATE_NEW_STUDENT_QUERY = "INSERT INTO student(studentName, grade, classId) VALUES (?,?,?)";
 private final String SHOW_STUDENT_BY_ID_QUERY = "SELECT * FROM student WHERE id = ?";
-private final String SHOW_ALL_STUDENTS_QUERY = "SELECT * FROM student";	
+private final String SHOW_ALL_STUDENTS_QUERY = "SELECT * FROM student";
+private final String DELETE_STUDENT_BY_ID_QUERY = "DELETE FROM student WHERE id = ?";
+private final String DELETE_STUDENT_BY_CLASS_ID_QUERY = "DELETE FROM student WHERE classid = ?";
 		
 
 	
@@ -45,5 +47,17 @@ private final String SHOW_ALL_STUDENTS_QUERY = "SELECT * FROM student";
 
 	//finish coding and setting the prepared statements
 		}
+	}
+	
+	public void deleteStudentById (int id) throws SQLException {
+		PreparedStatement ps = connection.prepareStatement(DELETE_STUDENT_BY_ID_QUERY);
+		ps.setInt(1, id);
+		ps.executeUpdate();
+	}
+	
+	public void deleteStudentByClassId (int classId) throws SQLException {
+		PreparedStatement ps = connection.prepareStatement(DELETE_STUDENT_BY_CLASS_ID_QUERY);
+		ps.setInt(1, classId);
+		ps.executeUpdate();
 	}
 }
